@@ -24,15 +24,24 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(controller: _controladorNome),
+                child: TextField(
+                    controller: _controladorNome,
+                decoration: const InputDecoration()
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(controller: _controladorQuantidade),
+                child: TextField(
+                    controller: _controladorQuantidade,
+                    decoration: const InputDecoration(),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(controller: _controladorValor),
+                child: TextField(
+                    controller: _controladorValor,
+                    decoration: const InputDecoration(),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
