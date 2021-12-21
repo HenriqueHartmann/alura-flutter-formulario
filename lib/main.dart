@@ -18,50 +18,67 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Cadastrando produto'),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(
-                    controller: _controladorNome,
-                    decoration: const InputDecoration()),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(
-                  controller: _controladorQuantidade,
-                  decoration: const InputDecoration(),
-                  keyboardType: TextInputType.number,
+          body: SingleChildScrollView(
+            reverse: true,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: TextField(
+                      controller: _controladorNome,
+                      decoration: const InputDecoration()),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: TextField(
-                  controller: _controladorValor,
-                  decoration: const InputDecoration(),
-                  keyboardType: TextInputType.number,
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: TextField(
+                    controller: _controladorQuantidade,
+                    decoration: const InputDecoration(),
+                    keyboardType: TextInputType.number,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: ElevatedButton(
-                    child: const Text('Cadastrar'),
-                    onPressed: () {
-                      final String nome = _controladorNome.text;
-                      final int? quantidade =
-                          int.tryParse(_controladorQuantidade.text);
-                      final double? valor =
-                          double.tryParse(_controladorValor.text);
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: TextField(
+                    controller: _controladorValor,
+                    decoration: const InputDecoration(),
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+                Wrap(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: ElevatedButton(
+                          child: const Text('Reset'),
+                          onPressed: () {
+                            _controladorNome.clear();
+                            _controladorQuantidade.clear();
+                            _controladorValor.clear();
+                          }),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: ElevatedButton(
+                          child: const Text('Cadastrar'),
+                          onPressed: () {
+                            final String nome = _controladorNome.text;
+                            final int? quantidade =
+                                int.tryParse(_controladorQuantidade.text);
+                            final double? valor =
+                                double.tryParse(_controladorValor.text);
 
-                      if (quantidade != null && valor != null) {
-                        final Produto produtoNovo =
-                            Produto(nome, quantidade, valor);
-                        print(produtoNovo);
-                      }
-                    }),
-              )
-            ]),
+                            if (quantidade != null && valor != null) {
+                              final Produto produtoNovo =
+                                  Produto(nome, quantidade, valor);
+                              print(produtoNovo);
+                            }
+                          }),
+                    )
+                  ],
+                )
+              ]),
+            ),
           )),
     );
   }
