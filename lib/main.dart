@@ -45,35 +45,39 @@ class MyApp extends StatelessWidget {
                     keyboardType: TextInputType.number,
                   ),
                 ),
-                Wrap(
+                Row(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: ElevatedButton(
-                          child: const Text('Reset'),
-                          onPressed: () {
-                            _controladorNome.clear();
-                            _controladorQuantidade.clear();
-                            _controladorValor.clear();
-                          }),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: ElevatedButton(
+                            child: const Text('Reset'),
+                            onPressed: () {
+                              _controladorNome.clear();
+                              _controladorQuantidade.clear();
+                              _controladorValor.clear();
+                            }),
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: ElevatedButton(
-                          child: const Text('Cadastrar'),
-                          onPressed: () {
-                            final String nome = _controladorNome.text;
-                            final int? quantidade =
-                                int.tryParse(_controladorQuantidade.text);
-                            final double? valor =
-                                double.tryParse(_controladorValor.text);
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: ElevatedButton(
+                            child: const Text('Cadastrar'),
+                            onPressed: () {
+                              final String nome = _controladorNome.text;
+                              final int? quantidade =
+                                  int.tryParse(_controladorQuantidade.text);
+                              final double? valor =
+                                  double.tryParse(_controladorValor.text);
 
-                            if (quantidade != null && valor != null) {
-                              final Produto produtoNovo =
-                                  Produto(nome, quantidade, valor);
-                              print(produtoNovo);
-                            }
-                          }),
+                              if (quantidade != null && valor != null) {
+                                final Produto produtoNovo =
+                                    Produto(nome, quantidade, valor);
+                                print(produtoNovo);
+                              }
+                            }),
+                      ),
                     )
                   ],
                 )
