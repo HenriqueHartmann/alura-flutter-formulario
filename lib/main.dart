@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'models/produto.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,6 +29,12 @@ class MyApp extends StatelessWidget {
                   final String nome = _controladorNome.text;
                   final int? quantidade = int.tryParse(_controladorQuantidade.text);
                   final double? valor = double.tryParse(_controladorValor.text);
+
+                  if (quantidade != null && valor != null) {
+                    final Produto produtoNovo = Produto(
+                        nome, quantidade, valor);
+                    print(produtoNovo);
+                  }
                 }
             )
           ]
